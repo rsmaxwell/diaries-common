@@ -1,0 +1,78 @@
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'eclipse'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://pluto.rsmaxwell.co.uk/archiva/repository/releases"
+    }
+}
+
+dependencies {
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly libs.junit.platform.launcher
+
+    implementation libs.commons.cli
+    implementation libs.jackson.databind
+
+    testImplementation libs.log4j.core
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+
+    implementation libs.postgresql
+    implementation libs.hibernate.core
+    implementation(libs.jakarta.annotation.api)
+    annotationProcessor(libs.hibernate.jpamodelgen)
+        
+    implementation libs.guava
+    implementation libs.log4j.api
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    withSourcesJar()
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+ext {
+    projectVersion = project.hasProperty('projectVersion') ? project.getProperty('projectVersion') : "0.0.1-SNAPSHOT"
+    repositoryName = project.hasProperty('repositoryName') ? project.getProperty('repositoryName') : "snapshots"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = projectArtifactId
+            groupId = projectGroupId
+            version = projectVersion
+
+            from components["java"]
+        }
+    }
+
+    repositories {
+        maven {
+            credentials {
+                username = mavenUser
+                password = mavenPassword
+            }
+
+            url = "${mavenRepositoryBaseURL}/${repositoryName}"
+            allowInsecureProtocol = true
+        }
+    }
+}
+
