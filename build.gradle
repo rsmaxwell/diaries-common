@@ -16,21 +16,26 @@ dependencies {
     testImplementation libs.junit.jupiter
     testRuntimeOnly libs.junit.platform.launcher
 
+
     implementation libs.commons.cli
     implementation libs.jackson.databind
-
+        
     testImplementation libs.log4j.core
+    implementation libs.log4j.api
 
     compileOnly libs.lombok
     annotationProcessor libs.lombok
 
-    implementation libs.postgresql
-    implementation libs.hibernate.core
-    implementation(libs.jakarta.annotation.api)
-    annotationProcessor(libs.hibernate.jpamodelgen)
-        
-    implementation libs.guava
-    implementation libs.log4j.api
+
+
+    
+   	implementation libs.spring.boot.starter.data.jpa
+	testImplementation libs.spring.boot.starter.test
+
+	runtimeOnly libs.h2
+    // runtimeOnly libs.postgresql
+    
+    implementation project(':diaries-common')
 }
 
 java {

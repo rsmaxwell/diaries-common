@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import com.rsmaxwell.diaries.common.model.Diary;
+import com.rsmaxwell.diaries.common.config.Config;
 
 class DiaryTest {
 	@Test
 	void appHasAGreeting() {
-		Diary classUnderTest = new Diary();
+		Config classUnderTest = new Config();
 		assertNotNull(classUnderTest);
 	}
 }
