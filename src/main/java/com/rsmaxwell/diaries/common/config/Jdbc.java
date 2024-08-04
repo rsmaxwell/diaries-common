@@ -6,4 +6,5 @@ import lombok.Data;
 public class Jdbc {
 
 	private String dbms;
+	private String driver;
 }

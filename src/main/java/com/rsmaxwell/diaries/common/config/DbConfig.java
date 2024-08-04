@@ -8,7 +8,7 @@ import lombok.Data;
 public class DbConfig {
 
 	private Go go;
-	private Jdbc jdbc;
+	private Jdbc jdbc;;
 	private String host;
 	private int port;
 	private String database;

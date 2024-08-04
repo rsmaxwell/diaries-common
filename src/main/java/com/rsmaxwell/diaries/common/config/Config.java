@@ -17,6 +17,7 @@ public class Config {
 
 	private MqttConfig mqtt;
 	private DbConfig db;
+	private String secret;
 
 	public static Config read() throws StreamReadException, DatabindException, IOException {
 		String home = System.getProperty("user.home");
