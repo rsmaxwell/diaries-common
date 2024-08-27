@@ -1,6 +1,7 @@
 package com.rsmaxwell.diaries.common.config;
 
 import java.util.List;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -9,7 +10,7 @@ public class DbConfig {
 
 	private Go go;
 	private Jdbc jdbc;
-	private Hibernate hibernate;
+	private Map<String, String> additionalConnectionProperties;
 	private String host;
 	private int port;
 	private String database;
