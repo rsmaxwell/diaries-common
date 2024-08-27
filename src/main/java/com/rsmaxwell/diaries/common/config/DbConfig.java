@@ -9,6 +9,7 @@ public class DbConfig {
 
 	private Go go;
 	private Jdbc jdbc;
+	private Hibernate hibernate;
 	private String host;
 	private int port;
 	private String database;
