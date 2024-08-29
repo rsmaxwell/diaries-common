@@ -21,7 +21,7 @@ public class DbConfig {
 		return String.format("jdbc:%s://%s:%d/", jdbc.getDbms(), host, port);
 	}
 
-	public String getJdbcUrlWithDatabase() {
-		return String.format("jdbc:%s://%s:%d/%s", jdbc.getDbms(), host, port, database);
+	public String getJdbcUrl(String database2) {
+		return String.format("jdbc:%s://%s:%d/%s", jdbc.getDbms(), host, port, database2);
 	}
 }

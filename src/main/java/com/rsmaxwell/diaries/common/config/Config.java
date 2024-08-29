@@ -1,8 +1,7 @@
 package com.rsmaxwell.diaries.common.config;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -20,9 +19,8 @@ public class Config {
 	private String secret;
 	private Diaries diaries;
 
-	public static Config read() throws StreamReadException, DatabindException, IOException {
-		String home = System.getProperty("user.home");
-		Path filePath = Paths.get(home, ".diaries", "responder.json");
-		return mapper.readValue(filePath.toFile(), Config.class);
+	public static Config read(String filename) throws StreamReadException, DatabindException, IOException {
+		File file = new File(filename);
+		return mapper.readValue(file, Config.class);
 	}
 }
