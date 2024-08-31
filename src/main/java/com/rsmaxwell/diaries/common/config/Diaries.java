@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class Diaries {
 
-	private String path;
+	private String original;
+	private String working;
 
 }
