@@ -16,11 +16,21 @@ public class Config {
 
 	private MqttConfig mqtt;
 	private DbConfig db;
+	private String refreshPeriod;
+	private String refreshExpiration;
 	private String secret;
 	private DiariesConfig diaries;
 
 	public static Config read(String filename) throws StreamReadException, DatabindException, IOException {
 		File file = new File(filename);
 		return mapper.readValue(file, Config.class);
+	}
+
+	public Integer getRefreshPeriodSeconds() {
+		return TimeParser.parseTimeToSeconds(this.refreshPeriod);
+	}
+
+	public Integer getRefreshExpirationSeconds() {
+		return TimeParser.parseTimeToSeconds(this.refreshExpiration);
 	}
 }
