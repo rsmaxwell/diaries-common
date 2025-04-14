@@ -5,31 +5,38 @@ import java.util.regex.Pattern;
 
 public class TimeParser {
 
-    public static int parseTimeToSeconds(String input) {
-        // Regular expression to match hours (h), minutes (m), and seconds (s)
-        Pattern pattern = Pattern.compile("(?:(\\d+)h)?(?:(\\d+)m)?(?:(\\d+)s)?");
-        Matcher matcher = pattern.matcher(input);
-        
-        if (!matcher.matches()) {
-            throw new IllegalArgumentException("Invalid time format");
-        }
+	public static int parseTimeToSeconds(String input) {
+		// Regular expression to match days (d), hours (h), minutes (m), and seconds (s)
+		Pattern pattern = Pattern.compile("^\\s*(?:(\\d+)d)?(?:(\\d+)h)?(?:(\\d+)m)?(?:(\\d+)s)?\\s*$");
+		Matcher matcher = pattern.matcher(input);
 
-        // Parse the values or set them to 0 if missing
-        String hoursString = matcher.group(1);
-        String minutesString = matcher.group(2);
-        String secondsString = matcher.group(3);
+		if (!matcher.matches()) {
+			throw new IllegalArgumentException("Invalid time format");
+		}
 
-        int hours = hoursString != null ? Integer.parseInt(hoursString) : 0;
-        int minutes = minutesString != null ? Integer.parseInt(minutesString) : 0;
-        int seconds = secondsString != null ? Integer.parseInt(secondsString) : 0;
+		// Parse the group values
+		String daysString = matcher.group(1);
+		String hoursString = matcher.group(2);
+		String minutesString = matcher.group(3);
+		String secondsString = matcher.group(4);
 
-        // Calculate total seconds
-        return (hours * 3600) + (minutes * 60) + seconds;
-    }
+		// Check that at least one group matched
+		if (daysString == null && hoursString == null && minutesString == null && secondsString == null) {
+			throw new IllegalArgumentException("Invalid time format");
+		}
 
-    public static void main(String[] args) {
-        String input = "1h2m3s";  // Example input
-        int totalSeconds = parseTimeToSeconds(input);
-        System.out.println("Total seconds: " + totalSeconds);
-    }
+		int days = daysString != null ? Integer.parseInt(daysString) : 0;
+		int hours = hoursString != null ? Integer.parseInt(hoursString) : 0;
+		int minutes = minutesString != null ? Integer.parseInt(minutesString) : 0;
+		int seconds = secondsString != null ? Integer.parseInt(secondsString) : 0;
+
+		// Calculate total seconds
+		return (days * 24 * 3600) + (hours * 3600) + (minutes * 60) + seconds;
+	}
+
+	public static void main(String[] args) {
+		String input = "1h2m3s"; // Example input
+		int totalSeconds = parseTimeToSeconds(input);
+		System.out.println("Total seconds: " + totalSeconds);
+	}
 }
