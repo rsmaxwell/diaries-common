@@ -16,10 +16,10 @@ public class Config {
 
 	private MqttConfig mqtt;
 	private DbConfig db;
+	private DiariesConfig diaries;
 	private String refreshPeriod;
 	private String refreshExpiration;
 	private String secret;
-	private DiariesConfig diaries;
 
 	public static Config read(String filename) throws StreamReadException, DatabindException, IOException {
 		File file = new File(filename);

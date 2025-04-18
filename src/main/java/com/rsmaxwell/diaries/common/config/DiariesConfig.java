@@ -8,5 +8,5 @@ public class DiariesConfig {
 
 	private String original;
 	private String working;
-
+	private String baseUrl;
 }
