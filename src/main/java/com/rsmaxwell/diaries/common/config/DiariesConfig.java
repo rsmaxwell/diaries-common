@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class DiariesConfig {
 
-	private String original;
-	private String uploadsDir;
-	private String working;
+	private String root;
 	private String baseUrl;
+	private String diaries;
+	private String files;
 }

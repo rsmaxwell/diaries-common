@@ -29,7 +29,7 @@ class DiaryTest {
 			Config config = Config.read(filename);
 			DbConfig dbConfig = config.getDb();
 
-			System.out.printf("Diaries.path: %s\n", config.getDiaries().getOriginal());
+			System.out.printf("Root.path: %s\n", config.getDiaries().getRoot());
 
 		} catch (Exception e) {
 			e.printStackTrace();
