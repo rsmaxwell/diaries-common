@@ -10,15 +10,15 @@ public class SigninReply {
 	private Integer refreshPeriod;
 	private Long userId;
 	private String username;
-	private String knownas;
+	private String knownAs;
 
-	public SigninReply(String accessToken, String refreshToken, Integer refreshPeriod, Long id, String username, String knownas) {
+	public SigninReply(String accessToken, String refreshToken, Integer refreshPeriod, Long id, String username, String knownAs) {
 		this.accessToken = accessToken;
 		this.refreshToken = refreshToken;
 		this.refreshPeriod = refreshPeriod;
 		this.userId = id;
 		this.username = username;
-		this.knownas = knownas;
+		this.knownAs = knownAs;
 	}
 
 }
