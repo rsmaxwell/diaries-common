@@ -12,8 +12,10 @@ public class SigninReply {
 	private String username;
 	private String knownAs;
 	private String sessionId;
+	private String status;
+	private String role;
 
-	public SigninReply(String accessToken, String refreshToken, Integer refreshPeriod, Long id, String username, String knownAs, String sessionId) {
+	public SigninReply(String accessToken, String refreshToken, Integer refreshPeriod, Long id, String username, String knownAs, String sessionId, String status, String role) {
 		this.accessToken = accessToken;
 		this.refreshToken = refreshToken;
 		this.refreshPeriod = refreshPeriod;
@@ -21,6 +23,8 @@ public class SigninReply {
 		this.username = username;
 		this.knownAs = knownAs;
 		this.sessionId = sessionId;
+		this.status = status;
+		this.role = role;
 	}
 
 }
